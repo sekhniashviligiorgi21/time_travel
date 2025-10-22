@@ -5,8 +5,7 @@ import os
 import requests
 from fastapi.staticfiles import StaticFiles
 
-# Serve frontend
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
+
 
 load_dotenv()
 
@@ -15,6 +14,10 @@ GEMINI_URL = "https://api.gemini.com"
 
 
 app = FastAPI()
+
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")\
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
