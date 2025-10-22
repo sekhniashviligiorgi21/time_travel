@@ -18,7 +18,7 @@ document.getElementById("mybtn").onclick = async function(){
         document.getElementById("myinput").style.display = "none"
         document.getElementById("mybtn").style.display = "none"    
         document.getElementById("Loading").innerText = `Travelling to year ` + year +`...`
-        fetch(`http://127.0.0.1:8000/events/${year}`)
+        fetch(`https://time-travel-y56u.onrender.com/events/${year}`)
             .then(res=>res.json())
             .then(data=>{
                 document.getElementById("time").style.display = "block";
