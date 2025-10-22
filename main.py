@@ -6,8 +6,8 @@ import requests
 from fastapi.staticfiles import StaticFiles
 
 
-
-load_dotenv()
+if not os.getenv("RENDER"):
+    load_dotenv()
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 GEMINI_URL = "https://api.gemini.com"
@@ -15,7 +15,7 @@ GEMINI_URL = "https://api.gemini.com"
 
 app = FastAPI()
 
-app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")\
+
 
 
 app.add_middleware(
@@ -64,3 +64,5 @@ def get_year(year: int):
         events_text = f"Error: {response.status_code} - {response.text}"
 
     return {"year": year, "events": events_text}
+
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
