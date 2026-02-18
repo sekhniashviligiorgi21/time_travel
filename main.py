@@ -16,8 +16,6 @@ GEMINI_URL = "https://api.gemini.com"
 app = FastAPI()
 
 
-
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -48,7 +46,7 @@ def get_year(year: int):
         ]
     }
 
-    response = requests.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent", headers=headers, json=data)
+    response = requests.post("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent", headers=headers, json=data)
 
     if response.status_code == 200:
         candidates = response.json().get("candidates", [])
